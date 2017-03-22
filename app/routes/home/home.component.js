@@ -11,6 +11,7 @@ import LanguageSelector from './languageSelector/languageSelector.component';
 export default class Home extends PureComponent {
   static propTypes = {
     teams: PropTypes.object,
+    teamsBySquadValue: PropTypes.object,
     language: PropTypes.string.isRequired,
     getTeams: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
