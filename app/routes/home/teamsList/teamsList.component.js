@@ -1,9 +1,9 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
+import InputRange from 'react-input-range';
 
 import messages from './teamsList.messages';
 import Team from '../team/team.component';
-import InputRange from 'react-input-range';
 
 export default class TeamsList extends PureComponent {
   static propTypes = {
@@ -15,8 +15,8 @@ export default class TeamsList extends PureComponent {
     this.state = {
       value: {
         min: 100,
-        max: 200
-      }
+        max: 200,
+      },
     };
   }
 
@@ -34,7 +34,8 @@ export default class TeamsList extends PureComponent {
           formatLabel={value => `${value} mln €`}
           value={this.state.value}
           onChange={value => this.setState({ value })}
-          onChangeComplete={value => console.log(value)} />
+          onChangeComplete={value => console.log(value)}
+        />
 
         <ul className="teams-list__items">
           {this.props.items.toArray().map((item, key) => (
