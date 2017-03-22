@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import envConfig from 'env-config';
 
 import messages from './home.messages';
-import TeamsList from 'teamsList/teamsList.component';
+import TeamsList from './teamsList/teamsList.component';
 import LanguageSelector from './languageSelector/languageSelector.component';
 
 
