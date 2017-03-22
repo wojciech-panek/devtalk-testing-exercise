@@ -1,12 +1,9 @@
 import { ACTION_TYPES } from './teams.constants';
 
 
-export function getTeams(language) {
+export function getTeams() {
   return {
     type: ACTION_TYPES.GET,
-    payload: {
-      language,
-    },
   };
 }
 
