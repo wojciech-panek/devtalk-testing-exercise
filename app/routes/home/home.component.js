@@ -29,9 +29,6 @@ export default class Home extends PureComponent {
   }
 
   render() {
-    someSelector(params)(state)
-    console.log('sortTeamsBySquadValue', this.props.teamsBySquadValue.toJS());
-    console.log('teams', this.props.teams.toJS());
     return (
       <div className="home">
         <Helmet
