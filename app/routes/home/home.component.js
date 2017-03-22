@@ -30,15 +30,19 @@ export default class Home extends PureComponent {
   render() {
     return (
       <div className="home">
+
         <Helmet
           title="Homepage"
         />
 
-        <h1 className="home__title">
-          <i className="home__title-logo" />
-          <FormattedMessage {...messages.welcome} />
-        </h1>
-        
+        <div className="home__header">
+          <h1 className="home__title">
+            <i className="home__title-logo" />
+            <FormattedMessage {...messages.welcome} />
+          </h1>
+
+        </div>
+
         <TeamsList items={this.props.teams} />
 
         <LanguageSelector
