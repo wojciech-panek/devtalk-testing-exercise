@@ -7,9 +7,15 @@ export default class Team extends PureComponent {
   };
 
   render() {
+    const spanStyle = {
+      backgroundImage: 'url(' + this.props.data.get('crestUrl') + ')'
+    };
+
     return (
       <li className="team">
-        {this.props.data.get('name')} [{this.props.data.get('shortName')}]
+        <span className="team-logo" style={spanStyle}></span>
+        <span className="team-name">{this.props.data.get('name')},</span>
+        <span className="team-value">{this.props.data.get('squadMarketValue')}</span>
       </li>
     );
   }

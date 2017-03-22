@@ -1,11 +1,18 @@
 @import "teamsList/teamsList";
+@import "team/team";
 
 .home {
-  padding: 40px;
 }
 
 .home__title {
+  color: white;
   line-height: 50px;
+  margin-top: 0;
+  padding: 60px;
+}
+
+.home__header {
+  background: $second-color;
 }
 
 .home__title-logo {
