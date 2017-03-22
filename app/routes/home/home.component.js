@@ -38,9 +38,7 @@ export default class Home extends PureComponent {
           <i className="home__title-logo" />
           <FormattedMessage {...messages.welcome} />
         </h1>
-
-        <div>Environment: {envConfig.name}</div>
-
+        
         <TeamsList items={this.props.teams} />
 
         <LanguageSelector

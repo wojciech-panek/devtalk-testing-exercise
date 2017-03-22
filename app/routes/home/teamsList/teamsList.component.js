@@ -17,7 +17,7 @@ export default class TeamsList extends PureComponent {
           <FormattedMessage {...messages.title} />:
         </h2>
 
-        <ul>
+        <ul className="teams-list__items">
           {this.props.items.toArray().map((item, key) => (
             <Team key={key} data={item} />
           ))}

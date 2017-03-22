@@ -1,0 +1,19 @@
+.team {
+  display: flex;
+  padding: 10px 0;
+}
+
+.team-logo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  height: 50px;
+  width: 50px;
+}
+
+.team-name {
+  align-self: center;
+  font-weight: 500;
+  padding-left: 20px;
+}
