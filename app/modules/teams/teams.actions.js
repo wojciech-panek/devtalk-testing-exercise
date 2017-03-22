@@ -22,3 +22,10 @@ export function getTeamsError(error) {
   };
 }
 
+export function setRangeValues(values) {
+  return {
+    type: ACTION_TYPES.SET_RANGE_VALUES,
+    values,
+  };
+}
+

@@ -1,7 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import envConfig from 'env-config';
 
 import messages from './home.messages';
 import TeamsList from './teamsList/teamsList.component';
@@ -15,16 +14,17 @@ export default class Home extends PureComponent {
     language: PropTypes.string.isRequired,
     getTeams: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
+    setRangeValues: PropTypes.func.isRequired,
     router: PropTypes.object.isRequired,
   };
 
   componentWillMount() {
-    this.props.getTeams(this.props.language);
+    this.props.getTeams();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.language !== this.props.language) {
-      this.props.getTeams(nextProps.language);
+    if (nextProps.teams.rangeValues !== this.props.teams.rangeValues) {
+      this.props.getTeams();
     }
   }
 
@@ -44,7 +44,10 @@ export default class Home extends PureComponent {
 
         </div>
 
-        <TeamsList items={this.props.teams} />
+        <TeamsList
+          items={this.props.teamsBySquadValue}
+          setRangeValues={this.props.setRangeValues}
+        />
 
         <LanguageSelector
           language={this.props.language}
