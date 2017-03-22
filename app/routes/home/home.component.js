@@ -1,10 +1,10 @@
 import React, { PureComponent, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import envConfig from 'env-config';
 
 import messages from './home.messages';
 import TeamsList from './teamsList/teamsList.component';
+import RangeSelector from './rangeSelector/rangeSelector.component';
 import LanguageSelector from './languageSelector/languageSelector.component';
 
 
@@ -12,20 +12,16 @@ export default class Home extends PureComponent {
   static propTypes = {
     teams: PropTypes.object,
     teamsBySquadValue: PropTypes.object,
+    rangeValues: PropTypes.object,
     language: PropTypes.string.isRequired,
     getTeams: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
+    setRangeValues: PropTypes.func.isRequired,
     router: PropTypes.object.isRequired,
   };
 
   componentWillMount() {
-    this.props.getTeams(this.props.language);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.language !== this.props.language) {
-      this.props.getTeams(nextProps.language);
-    }
+    this.props.getTeams();
   }
 
   render() {
@@ -44,7 +40,14 @@ export default class Home extends PureComponent {
 
         </div>
 
-        <TeamsList items={this.props.teams} />
+        <RangeSelector
+          rangeValues={this.props.rangeValues}
+          setRangeValues={this.props.setRangeValues}
+        />
+
+        <TeamsList
+          items={this.props.teamsBySquadValue}
+        />
 
         <LanguageSelector
           language={this.props.language}
