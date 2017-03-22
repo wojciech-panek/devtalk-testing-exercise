@@ -1,17 +1,22 @@
 import { call, put, fork } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
-import { stringify } from 'query-string';
+import envConfig from '../../environment/base';
 
 import request from '../../utils/request';
 import { getTeamsSuccess, getTeamsError } from './teams.actions';
 import { ACTION_TYPES } from './teams.constants';
 
 
-export function* fetchTeamsSaga(action) {
+export function* fetchTeamsSaga() {
+  const sagaFetchingOptions = {
+    method: 'GET',
+    headers: {
+      'X-Auth-Token': envConfig.api.key,
+    },
+  };
+
   try {
-    const data = yield call(request, `/fixtures/teams.json?${stringify({
-      language: action.payload.language,
-    })}`);
+    const data = yield call(request, `${envConfig.api.baseUrl}${envConfig.api.urls.teams}`, sagaFetchingOptions);
 
     yield put(getTeamsSuccess(data));
   } catch (e) {
@@ -27,7 +32,7 @@ export function* getTeamsSaga() {
   }
 }
 
-export default function* teams() {
+export default function* teamsSaga() {
   yield [
     fork(getTeamsSaga),
   ];
