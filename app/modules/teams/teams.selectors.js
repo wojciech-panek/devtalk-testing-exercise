@@ -4,21 +4,21 @@ import { toNumber } from 'lodash';
 const MULTIPLIER = 1000000;
 
 
-const selectTeamsDomain = () => (state) => state.get('teams');
+const selectTeamsDomain = state => state.get('teams');
 
-export const selectTeamsList = () => createSelector(
-  selectTeamsDomain(), state => state.get('list')
+export const selectTeamsList = createSelector(
+  selectTeamsDomain, state => state.get('list')
 );
 
-export const selectRangeValues = () => createSelector(
-  selectTeamsDomain(), state => state.get('rangeValues')
+export const selectRangeValues = createSelector(
+  selectTeamsDomain, state => state.get('rangeValues')
 );
 
-export const filterTeamsListBySquadValue = () => createSelector(
-  selectTeamsList(),
-  selectRangeValues(),
+export const filterTeamsListBySquadValue = createSelector(
+  selectTeamsList,
+  selectRangeValues,
   (teams, rangeValues) => teams.filter((team) => {
-    let squadMarket = toNumber(team.get('squadMarketValue').replace(' €', '').replace(/,/g, ''));
+    const squadMarket = toNumber(team.get('squadMarketValue').replace(' €', '').replace(/,/g, ''));
 
     return squadMarket > rangeValues.min() * MULTIPLIER && squadMarket < rangeValues.max() * MULTIPLIER;
   })
