@@ -11,6 +11,7 @@ import LanguageSelector from './languageSelector/languageSelector.component';
 export default class Home extends PureComponent {
   static propTypes = {
     teams: PropTypes.object,
+    teamsBySquadValue: PropTypes.object,
     language: PropTypes.string.isRequired,
     getTeams: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
@@ -28,6 +29,9 @@ export default class Home extends PureComponent {
   }
 
   render() {
+    someSelector(params)(state)
+    console.log('sortTeamsBySquadValue', this.props.teamsBySquadValue.toJS());
+    console.log('teams', this.props.teams.toJS());
     return (
       <div className="home">
         <Helmet
