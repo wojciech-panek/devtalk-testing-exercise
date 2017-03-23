@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import Home from './home.component';
-import { getTeams, setRangeValues } from '../../modules/teams/teams.actions';
-import { setLanguage } from '../../modules/locales/locales.actions';
+import { teamsActions } from '../../modules/teams/teams.actions';
+import { localesActions } from '../../modules/locales/locales.actions';
 import { selectTeamsList, filterTeamsListBySquadValue, selectRangeValues } from '../../modules/teams/teams.selectors';
 import { selectLocalesLanguage } from '../../modules/locales/locales.selectors';
 
@@ -11,11 +11,11 @@ const mapStateToProps = createStructuredSelector({
   teams: selectTeamsList,
   rangeValues: selectRangeValues,
   teamsBySquadValue: filterTeamsListBySquadValue,
-  language: selectLocalesLanguage(),
+  language: selectLocalesLanguage,
 });
 
 export default connect(mapStateToProps, {
-  getTeams,
-  setLanguage,
-  setRangeValues,
+  getTeams: teamsActions.getTeams,
+  setLanguage: localesActions.setLanguage,
+  setRangeValues: teamsActions.setRangeValues,
 })(Home);

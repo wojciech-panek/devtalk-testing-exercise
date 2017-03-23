@@ -37,8 +37,13 @@ export default class Home extends PureComponent {
             <i className="home__title-logo" />
             <FormattedMessage {...messages.welcome} />
           </h1>
-
         </div>
+
+        <LanguageSelector
+          language={this.props.language}
+          setLanguage={this.props.setLanguage}
+          router={this.props.router}
+        />
 
         <RangeSelector
           rangeValues={this.props.rangeValues}
@@ -47,12 +52,6 @@ export default class Home extends PureComponent {
 
         <TeamsList
           items={this.props.teamsBySquadValue}
-        />
-
-        <LanguageSelector
-          language={this.props.language}
-          setLanguage={this.props.setLanguage}
-          router={this.props.router}
         />
       </div>
     );

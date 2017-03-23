@@ -1,5 +1,5 @@
 import React, { PropTypes, PureComponent } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import InputRange from 'react-input-range';
 
 import messages from './rangeSelector.messages';
@@ -7,10 +7,11 @@ import messages from './rangeSelector.messages';
 const MIN_VALUE = 0;
 const MAX_VALUE = 600;
 
-export default class RangeSelector extends PureComponent {
+class RangeSelector extends PureComponent {
   static propTypes = {
     rangeValues: PropTypes.object,
     setRangeValues: PropTypes.func.isRequired,
+    intl: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -22,16 +23,12 @@ export default class RangeSelector extends PureComponent {
   };
 
   render() {
-    if (!this.props.rangeValues) {
-      return null;
-    }
-
     return (
       <div className="range-selector">
         <InputRange
           maxValue={MAX_VALUE}
           minValue={MIN_VALUE}
-          formatLabel={value => `${value}`}
+          formatLabel={value => `${value} ${this.props.intl.messages[messages.price.id]}`}
           value={this.props.rangeValues.toJS()}
           onChange={value => this.changeRangeValue(value)}
         />
@@ -39,3 +36,5 @@ export default class RangeSelector extends PureComponent {
     );
   }
 }
+
+export default injectIntl(RangeSelector);

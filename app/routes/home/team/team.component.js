@@ -8,7 +8,7 @@ export default class Team extends PureComponent {
 
   render() {
     const spanStyle = {
-      backgroundImage: 'url(' + this.props.data.get('crestUrl') + ')'
+      backgroundImage: 'url(' + this.props.data.get('crestUrl') + ')',
     };
 
     return (

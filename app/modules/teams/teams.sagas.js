@@ -3,8 +3,7 @@ import { takeLatest } from 'redux-saga';
 import envConfig from '../../environment/base';
 
 import request from '../../utils/request';
-import { getTeamsSuccess, getTeamsError } from './teams.actions';
-import { ACTION_TYPES } from './teams.constants';
+import { teamsActions, teamsActionsTypes } from './teams.actions';
 
 
 export function* fetchTeamsSaga() {
@@ -17,18 +16,17 @@ export function* fetchTeamsSaga() {
 
   try {
     const data = yield call(request, `${envConfig.api.baseUrl}${envConfig.api.urls.teams}`, sagaFetchingOptions);
-
-    yield put(getTeamsSuccess(data));
+    yield put(teamsActions.getTeamsSuccess(data));
   } catch (e) {
-    yield put(getTeamsError(e));
+    yield put(teamsActions.getTeamsError(e));
   }
 }
 
 export function* getTeamsSaga() {
   try {
-    yield call(takeLatest, ACTION_TYPES.GET, fetchTeamsSaga);
+    yield call(takeLatest, teamsActionsTypes.GET_TEAMS, fetchTeamsSaga);
   } catch (e) {
-    yield put(getTeamsError(e));
+    yield put(teamsActions.getTeamsError(e));
   }
 }
 
