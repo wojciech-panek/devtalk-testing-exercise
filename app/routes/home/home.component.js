@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
 import messages from './home.messages';
+import AverageValue from './averageValue/averageValue.component';
 import TeamsList from './teamsList/teamsList.component';
 import RangeSelector from './rangeSelector/rangeSelector.component';
 import LanguageSelector from './languageSelector/languageSelector.component';
@@ -17,6 +18,7 @@ export default class Home extends PureComponent {
     getTeams: PropTypes.func.isRequired,
     setLanguage: PropTypes.func.isRequired,
     setRangeValues: PropTypes.func.isRequired,
+    arithmeticAverage: PropTypes.number.isRequired,
     router: PropTypes.object.isRequired,
   };
 
@@ -39,11 +41,15 @@ export default class Home extends PureComponent {
           </h1>
         </div>
 
-        <LanguageSelector
-          language={this.props.language}
-          setLanguage={this.props.setLanguage}
-          router={this.props.router}
-        />
+        <div className="home__sub-header">
+          <LanguageSelector
+            language={this.props.language}
+            setLanguage={this.props.setLanguage}
+            router={this.props.router}
+          />
+
+          <AverageValue arithmeticAverage={this.props.arithmeticAverage} />
+        </div>
 
         <RangeSelector
           rangeValues={this.props.rangeValues}
