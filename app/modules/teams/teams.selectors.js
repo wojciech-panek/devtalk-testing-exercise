@@ -34,5 +34,5 @@ export const selectArithmeticAverage = createSelector(
     }, 0);
 
     return round(sum / COUNT_OF_TEAMS);
-  })
-;
+  }
+);
