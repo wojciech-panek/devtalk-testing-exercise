@@ -1,5 +1,7 @@
 # Testing exercise
 
+Your assignment is to write unit tests (components, reducers, sagas, etc.).
+
 Project is very simple. Main functions of the project are:
 
 - website displays list of teams in the Premier League with team value,
