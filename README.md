@@ -1,19 +1,19 @@
-### Testing exercise
+# Testing exercise
 
-Waszym zadaniem jest przerestowanie kodu znajdującego się w repozytorium.
+Project is very simple. Main functions of the project are:
 
-Projekt jest bardzo prosty. Główne jego funkcje:
+- website displays list of teams in the Premier League with team value,
+- user can set team’s value range
+- calculate arithmetic average
 
-- strona wyświetlająca listę zespołów ligi angielskiej wraz z wartością graczy zespołu,
-- mozliwość ustawienia wartości minimalnej i maksymalnej zespołu,
-- obliczenie wartości średniej zespołu.
+If u need u can make code refactoring.
 
-Mozliwy jest refator kodu projektu w razie potrzeby.
-
-### Narzedzia do testowania
+## You have to use the tools
 
 - [Mocha](https://mochajs.org/)
 - [Sinon](http://sinonjs.org/)
 - [Chai](http://chaijs.com/)
 - [Enzyme](https://github.com/airbnb/enzyme)
 - [Istanbul](https://github.com/gotwarlost/istanbul/)
+
+*After manage of main task, you can try to write tests with alternative tools.*
