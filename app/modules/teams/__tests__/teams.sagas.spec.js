@@ -31,8 +31,7 @@ describe('Teams: sagas', () => {
 
       sagaTester.dispatch(teamsActions.getTeams());
 
-      expect(requestModule.request.firstCall.args[0])
-        .to.equal('http://api.football-data.org/v1/competitions/398/teams');
+      expect(requestModule.request).to.have.been.calledWith('http://api.football-data.org/v1/competitions/398/teams');
     });
 
     it('should dispatch getTeamsSuccess action after successful API call', () => {

@@ -68,7 +68,7 @@ describe('LanguageSelector: Component', () => {
     const languageSelectorOnChange = wrapper.find('.language-selector').prop('onChange');
 
     languageSelectorOnChange({ target: { value: 'de' } });
-    expect(setLanguage.getCall(0).args[0]).to.be.equal('de');
+    expect(setLanguage).to.have.been.calledWith('de');
   });
 
   it('should redirect to proper url from non-default language location', () => {
@@ -85,7 +85,7 @@ describe('LanguageSelector: Component', () => {
     const languageSelectorOnChange = wrapper.find('.language-selector').prop('onChange');
 
     languageSelectorOnChange({ target: { value: 'de' } });
-    expect(router.push.getCall(0).args[0]).to.be.equal('/de/some-location');
+    expect(router.push).to.have.been.calledWith('/de/some-location');
   });
 
 
@@ -103,7 +103,7 @@ describe('LanguageSelector: Component', () => {
     const languageSelectorOnChange = wrapper.find('.language-selector').prop('onChange');
 
     languageSelectorOnChange({ target: { value: 'de' } });
-    expect(router.push.getCall(0).args[0]).to.be.equal('/de/some-location');
+    expect(router.push).to.have.been.calledWith('/de/some-location');
   });
 
   it('should redirect to proper url witch default location', () => {
@@ -120,6 +120,6 @@ describe('LanguageSelector: Component', () => {
     const languageSelectorOnChange = wrapper.find('.language-selector').prop('onChange');
 
     languageSelectorOnChange({ target: { value: 'en' } });
-    expect(router.push.getCall(0).args[0]).to.be.equal('/some-location');
+    expect(router.push).to.have.been.calledWith('/some-location');
   });
 });

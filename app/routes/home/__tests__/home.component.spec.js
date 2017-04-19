@@ -73,7 +73,7 @@ describe('Home: Component', () => {
     expect(languageSelectorProps.router).to.be.equal(defaultProps.router);
 
     languageSelectorProps.setLanguage();
-    expect(setLanguage.calledOnce).to.be.equal(true);
+    expect(setLanguage).to.have.been.calledOnce;
   });
 
   it('should render <AverageValue />', () => {
@@ -99,7 +99,7 @@ describe('Home: Component', () => {
     expect(rangeSelectorProps.rangeValues).to.be.equal(defaultProps.rangeValues);
 
     rangeSelectorProps.setRangeValues();
-    expect(setRangeValues.calledOnce).to.be.equal(true);
+    expect(setRangeValues).to.have.been.calledOnce;
   });
 
   it('should render <TeamsList/>', () => {
@@ -116,6 +116,6 @@ describe('Home: Component', () => {
     const getTeams = spy();
     shallow(component({ getTeams }));
 
-    expect(getTeams.callCount).to.be.equal(1);
+    expect(getTeams).to.have.been.calledOnce;
   });
 });

@@ -47,6 +47,6 @@ describe('RangeSelector: Component', () => {
 
     wrapper.find(InputRange).prop('onChange')('some-value');
 
-    expect(setRangeValues.firstCall.args[0]).to.equal('some-value');
+    expect(setRangeValues).to.have.been.calledWith('some-value');
   });
 });

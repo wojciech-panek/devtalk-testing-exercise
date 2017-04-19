@@ -13,21 +13,21 @@ describe('Home: Container', () => {
 
       mapDispatchToProps(dispatch).setLanguage();
 
-      expect(dispatch.firstCall.args[0]).to.deep.equal(localesActions.setLanguage());
+      expect(dispatch).to.have.been.calledWith(localesActions.setLanguage());
     });
     it('should call TeamsActions.getTeams', () => {
       const dispatch = spy();
 
       mapDispatchToProps(dispatch).getTeams();
 
-      expect(dispatch.firstCall.args[0]).to.deep.equal(teamsActions.getTeams());
+      expect(dispatch).to.have.been.calledWith(teamsActions.getTeams());
     });
     it('should call TeamsActions.setRangeValues', () => {
       const dispatch = spy();
 
       mapDispatchToProps(dispatch).setRangeValues();
 
-      expect(dispatch.firstCall.args[0]).to.deep.equal(teamsActions.setRangeValues());
+      expect(dispatch).to.have.been.calledWith(teamsActions.setRangeValues());
     });
   });
 });
