@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import App from './app.component';
@@ -10,6 +11,8 @@ const mapStateToProps = createStructuredSelector({
   language: selectLocalesLanguage,
 });
 
-export default connect(mapStateToProps, {
+export const mapDispatchToProps = (dispatch) => bindActionCreators({
   setLanguage: localesActions.setLanguage,
-})(App);
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import Home from './home.component';
@@ -17,8 +18,10 @@ const mapStateToProps = createStructuredSelector({
   language: selectLocalesLanguage,
 });
 
-export default connect(mapStateToProps, {
+export const mapDispatchToProps = (dispatch) => bindActionCreators({
   getTeams: teamsActions.getTeams,
   setLanguage: localesActions.setLanguage,
   setRangeValues: teamsActions.setRangeValues,
-})(Home);
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
