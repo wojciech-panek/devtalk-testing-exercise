@@ -4,10 +4,12 @@ import assert from 'assert';
 import Module from 'module';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
+import sinonChai from 'sinon-chai';
 import { jsdom } from 'jsdom';
 
 
 chai.use(chaiEnzyme());
+chai.use(sinonChai);
 chai.config.includeStack = true;
 
 const aliases = {
