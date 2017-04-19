@@ -33,17 +33,17 @@ describe('App: Component', () => {
 
   it('should not render App when language is not set', () => {
     const wrapper = shallow(component({ language: undefined }));
-    expect(wrapper.find('.app')).to.have.length(0);
+    expect(wrapper).to.not.have.descendants('.app');
   });
 
   it('should render App when language is set', () => {
     const wrapper = shallow(component({ language: 'en' }));
-    expect(wrapper.find('.app')).to.have.length(1);
+    expect(wrapper).to.have.exactly(1).descendants('.app');
   });
 
   it('should render <Helmet/>', () => {
     const wrapper = shallow(component({}));
-    expect(wrapper.find(Helmet)).to.have.length(1);
+    expect(wrapper).to.have.exactly(1).descendants(Helmet);
   });
 
   it('should pass props to <Helmet/>', () => {
@@ -57,20 +57,20 @@ describe('App: Component', () => {
 
   it('should render <IntlProvider/>', () => {
     const wrapper = shallow(component({}));
-    expect(wrapper.find(IntlProvider)).to.have.length(1);
+    expect(wrapper).to.have.exactly(1).descendants(IntlProvider);
   });
 
   it('should pass props to <IntlProvider/>', () => {
     const wrapper = shallow(component({}));
-    const intlProps = wrapper.find(IntlProvider).props();
 
-    expect(intlProps.locale).to.equal(defaultProps.language);
-    expect(intlProps.messages).to.equal(translationMessages[defaultProps.language]);
+    expect(wrapper.find(IntlProvider))
+      .to.have.props(['locale', 'messages'])
+      .deep.equal([defaultProps.language, translationMessages[defaultProps.language]]);
   });
 
   it('should render children inside <IntlProvider/>', () => {
     const wrapper = shallow(component({}));
-    expect(wrapper.find(IntlProvider).contains(children)).to.be.true;
+    expect(wrapper.find(IntlProvider)).to.contain(children);
   });
 
   it('should redirect to /404 when given locale doesn\'t exist', () => {
@@ -82,7 +82,7 @@ describe('App: Component', () => {
     };
 
     mount(component({ router }));
-    expect(router.push.firstCall.args[0]).to.equal('/404');
+    expect(router.push).to.have.been.calledWith('/404');
   });
 
   it('should set DEFAULT_LOCALE when no lang param is given', () => {
