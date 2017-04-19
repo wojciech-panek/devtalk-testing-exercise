@@ -2,7 +2,7 @@ import { call, put, fork } from 'redux-saga/effects';
 import { takeLatest } from 'redux-saga';
 import envConfig from '../../environment/base';
 
-import request from '../../utils/request';
+import { request } from '../../utils/request';
 import { teamsActions, teamsActionsTypes } from './teams.actions';
 
 
